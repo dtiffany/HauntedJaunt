@@ -5,9 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private static PlayerMovement p_instance;
-    //declare player instance
-
     public InputAction MoveAction;
     
     public float turnSpeed = 20f;
@@ -18,15 +15,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
 
-    public static PlayerMovement Instance
-    {
-        get
-        {
-            return p_instance;
-            //make player instance
-        }
-    }
-
     void Start ()
     {
         m_Animator = GetComponent<Animator> ();
@@ -34,8 +22,6 @@ public class PlayerMovement : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource> ();
         
         MoveAction.Enable();
-
-        p_instance = this;
     }
 
     void FixedUpdate ()

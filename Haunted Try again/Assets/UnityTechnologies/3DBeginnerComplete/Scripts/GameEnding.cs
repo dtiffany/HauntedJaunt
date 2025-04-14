@@ -15,7 +15,14 @@ public class GameEnding : MonoBehaviour
     bool m_IsPlayerCaught;
     float m_Timer;
     bool m_HasAudioPlayed;
-    
+
+    private GameObject[] allPickup;
+
+    void Start()
+    {
+        allPickup = GameObject.FindGameObjectsWithTag("Pickup");
+    }
+
     void OnTriggerEnter (Collider other)
     {
         if (other.gameObject == player)
@@ -57,6 +64,10 @@ public class GameEnding : MonoBehaviour
             if (doRestart)
             {
                 SceneManager.LoadScene (0);
+                foreach (GameObject pickup in allPickup)
+                {
+                    pickup.SetActive(true);
+                }
             }
             else
             {

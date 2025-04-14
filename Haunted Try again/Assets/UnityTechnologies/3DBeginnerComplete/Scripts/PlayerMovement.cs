@@ -9,6 +9,10 @@ public class PlayerMovement : MonoBehaviour
     
     public float turnSpeed = 20f;
 
+    [SerializeField] private AudioClip[] coinSoundClip;
+    [SerializeField] private AudioClip skullSoundClip;
+    [SerializeField] private ParticleSystem coinParticle;
+
     Animator m_Animator;
     Rigidbody m_Rigidbody;
     AudioSource m_AudioSource;
@@ -59,5 +63,19 @@ public class PlayerMovement : MonoBehaviour
     {
         m_Rigidbody.MovePosition (m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);
         m_Rigidbody.MoveRotation (m_Rotation);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {   
+        if (other.gameObject.CompareTag("Pickup")) 
+        {
+            other.gameObject.SetActive(false);
+            // count += 1;
+
+            AudioManager.instance.PlayRandomSoundClip(coinSoundClip, transform, 1f);
+            coinParticle.Play();
+
+            // SetCountText();
+        }
     }
 }

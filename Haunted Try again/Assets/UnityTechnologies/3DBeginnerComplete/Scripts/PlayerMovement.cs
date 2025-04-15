@@ -7,10 +7,19 @@ public class PlayerMovement : MonoBehaviour
 {
     private static PlayerMovement p_instance;
     //declare player instance
-
+    
     public InputAction MoveAction;
     
     public float turnSpeed = 20f;
+
+    public static PlayerMovement Instance
+    {
+        get
+        {
+            return p_instance;
+            //make player instance
+        }
+    }
 
     [SerializeField] private AudioClip[] coinSoundClip;
     [SerializeField] private AudioClip skullSoundClip;
@@ -22,14 +31,13 @@ public class PlayerMovement : MonoBehaviour
     Vector3 m_Movement;
     Quaternion m_Rotation = Quaternion.identity;
 
-    public static PlayerMovement Instance
-    {
-        get
-        {
-            return p_instance;
-            //make player instance
-        }
-    }
+
+    // Dylan's Inclusion
+    public Transform bagTransform;
+    public int coinCount = 0;
+    public int maxCoins = 20;
+    public Vector3 minBagScale = new Vector3(0.2f, 0.1f, 0.2f);
+    public Vector3 maxBagScale = new Vector3(0.4f, 0.2f, 0.4f);
 
     void Start ()
     {
@@ -84,12 +92,30 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Pickup")) 
         {
             other.gameObject.SetActive(false);
-            // count += 1;
+            coinCount++;
 
             AudioManager.instance.PlayRandomSoundClip(coinSoundClip, transform, 1f);
             coinParticle.Play();
 
-            // SetCountText();
+            UpdateBagScale();
         }
+    }
+
+    // Increases coin count
+    void UpdateBagScale()
+    {
+        float norm = Mathf.Clamp01((float)coinCount / maxCoins);   
+
+        float eased = Mathf.Sqrt(norm);
+
+        float scaleMultiplier = Mathf.Lerp(1f, maxBagScale.x / minBagScale.x, eased);
+
+        float newX = minBagScale.x * scaleMultiplier;
+        float newY = minBagScale.y * scaleMultiplier;
+
+        float fixedZ = minBagScale.z;
+
+
+        bagTransform.localScale = new Vector3(newX, newY, fixedZ);
     }
 }

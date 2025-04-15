@@ -2,7 +2,8 @@
 
 Modifications to Unity Learn | 3D Beginner: John Lemon - Complete Project, implementing gameplay elements described below.
 
-## Dot product - 
+## Dot product - Alarm when in enemy sight (Julia Wheless)
+  Dot product is used to give the enemies a cone of vision. If the player is in the enemy's vision, an alarm sounds, warning the player that they will be caught if they move closer. Implemented by using the dot product of the enemy postion and the player position to give enemies a 3.5 unit view radius and a 90 degree view angle in the Observer script. Alarm sound was added to the prefab Observer script and set to play when player is in cone of view and stop when player is not.
 
 ## Linear interpolation - John Lemmon Bag change color & size (Dylan Tiffany)
   When coins are collected, Linear Interpolation is used to increase the size of John Lemmons bag.

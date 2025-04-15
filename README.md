@@ -4,7 +4,11 @@ Modifications to Unity Learn | 3D Beginner: John Lemon - Complete Project, imple
 
 ## Dot product - 
 
-## Linear interpolation - 
+## Linear interpolation - John Lemmon Bag change in color & size (Dylan Tiffany)
+  When coins are collected, Linear Interpolation is used to increase the size of John Lemmons bag.
+    Created a new function in "PlayerMovement.cs" that will update the size of the bag every time our user collects a coin.
+  When John Lemmon is near a ghost, Linear Interpolation is used to turn the color of the bag green.
+    Implemented by adding a script "ColorChanger.cs" to a new 3D object 'Bag' as a child of JohnLemon, and attaching the Enemies group as "Ghost." 
 
 ## Particle effect with trigger - Coin pickup collision (Clio Tsao)
   A particle effect is triggered on collision between the player (John Lemon) and the coins on the map.

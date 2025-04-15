@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // Dylan's Inclusion
     public Transform bagTransform;
     public int coinCount = 0;
-    public int maxCoins = 20;
+    public int maxCoins = 50;
     public Vector3 minBagScale = new Vector3(0.2f, 0.1f, 0.2f);
     public Vector3 maxBagScale = new Vector3(0.4f, 0.2f, 0.4f);
 

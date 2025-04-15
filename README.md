@@ -4,7 +4,7 @@ Modifications to Unity Learn | 3D Beginner: John Lemon - Complete Project, imple
 
 ## Dot product - 
 
-## Linear interpolation - John Lemmon Bag change in color & size (Dylan Tiffany)
+## Linear interpolation - John Lemmon Bag change color & size (Dylan Tiffany)
   When coins are collected, Linear Interpolation is used to increase the size of John Lemmons bag.
     Created a new function in "PlayerMovement.cs" that will update the size of the bag every time our user collects a coin.
   When John Lemmon is near a ghost, Linear Interpolation is used to turn the color of the bag green.
